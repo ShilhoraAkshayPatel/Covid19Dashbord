@@ -1,0 +1,45 @@
+.table {
+    align-self: center;
+    border: 1px solid transparent;
+    border-collapse: separate;
+    border-spacing: 3px 3px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    border-radius: 15px;
+    background-color: #ffffff;
+    width: 36% !important;  
+    margin: 0px !important;
+}
+
+.table thead th {
+    
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    padding: .25rem;
+    background-color: white;
+    
+}
+
+.table tbody td {
+    font-size: 16px;
+    padding: .25rem;
+    font-weight: 700;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    background-color: white;
+    color: #4940cc;
+
+}
+
+.table  td:hover,th:hover{
+    box-shadow: 0 4px 8px 0 #0000000c, 0 6px 20px 0 #00000046;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+    cursor:pointer;
+}
+
+
+

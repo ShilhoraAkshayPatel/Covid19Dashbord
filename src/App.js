@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Navbar from './Main/Sidenav';
+import IndiaComp from './Components/India'
+import Symtoms from './sympre/Symtoms'
+import Prevention from './sympre/Prevention'
+import Global from './Components/Global'
+
+
+class App extends Component {
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar />
+          <Route exact path="/" component={IndiaComp} />
+          <Route path="/global" component={Global} />
+          <Route path="/symptoms" component={Symtoms} />
+          <Route path="/prevention" component={Prevention} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
+
+

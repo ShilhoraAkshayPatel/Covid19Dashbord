@@ -1,0 +1,89 @@
+nav.navbar, .navbar-default {
+  background-color: #fdfdfd !important;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.navbar-default {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+}
+
+@media screen and (min-width: 990px ) and (max-width:1400px) {
+    .navbar-nav{
+  margin-left: 28%;
+  
+    }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1401px) and (max-width : 1824px) {
+.navbar-nav{
+  margin-left: 48%;
+    }
+}
+
+
+.navbar-nav a{
+  font-size: 22px ;
+  font-weight: 800;
+  padding: 8px;
+  margin: 0px;
+  color: black !important;
+  font-family: 'Roboto', sans-serif;
+  
+  
+}
+
+.navbar-brand{
+  font-size: 32px !important;
+  font-weight: 900;
+  padding: 8px;
+  margin: 0px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
+
+.space{
+  padding: 2px;
+}
+
+
+.icon{
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  animation: facolor-spin infinite 18s linear;
+}
+
+@keyframes facolor-spin {
+  from {
+
+    filter: hue-rotate(360deg);
+  
+  }
+  to {
+    
+    filter: hue-rotate(0deg);
+  
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+    transform-origin: center;
+  }
+  to {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+.logo {
+  height: 55px;
+  animation: logo-spin infinite 5s linear;
+}
