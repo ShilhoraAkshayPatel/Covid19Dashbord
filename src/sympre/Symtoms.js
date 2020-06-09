@@ -60,7 +60,7 @@ export default class Symtoms extends Component {
                    <br /> Also the symptoms may appear 2-14 days after exposure.
             </Cardtext>
                 </Container>
-                <Container fluid>
+                <Container fluid className="text-center">
                     <Headtitle>Major & Common Symptoms</Headtitle>
                     <Row>
 
@@ -80,11 +80,12 @@ export default class Symtoms extends Component {
                                             {item.text}
                                         </Cardtext>
                                     </StyledCard>
-                                </Col>
+                                </Col >
                             )
-                        })}
-                    </Row>
-                </Container>
+                        })
+                        }
+                    </Row >
+                </Container >
 
                 <Container fluid className="text-center">
                     <StyledCard height={'auto'} width={'auto'}>

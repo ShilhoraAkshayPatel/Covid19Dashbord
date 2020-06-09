@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
+import { CardstyleforChart } from '../Card/Card'
 
 
 class LineChart extends Component {
@@ -39,90 +40,92 @@ class LineChart extends Component {
                 style={{ marginLeft: '-100px' }}
             >
 
-                <Line
-                    width={'1100px'}
-                    height={'800px'}
-                    data={lineChartData}
-                    options={
-                        {
-                            responsive: true,
-                            intersect: true,
-                            title: {
-                                display: true,
-                                text: 'Corona TotalCases',
-                                fontSize: 28,
-                            },
-                            legend: {
+                <CardstyleforChart color={'#fafffe'}>
+                    <Line
+                        width={this.props.width}
+                        height={this.props.height}
+                        data={lineChartData}
+                        options={
+                            {
+                                responsive: true,
+                                intersect: true,
+                                title: {
+                                    display: true,
+                                    text: 'Corona TotalCases',
+                                    fontSize: 28,
+                                },
+                                legend: {
 
-                                display: true,
-                                labels: {
-                                    fontSize: 14,
-                                    boxWidth: 80,
-                                    padding: 14,
-                                }
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                                bodyFontSize: 15,
-                                bodySpacing: 14,
-                                bodyFontFamily: "'Roboto', sans-serif ",
-                                titleFontSize: 14,
-                            },
-                            hover: {
-                                mode: 'index',
+                                    display: true,
+                                    labels: {
+                                        fontSize: 14,
+                                        boxWidth: 80,
+                                        padding: 14,
+                                    }
+                                },
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    bodyFontSize: 15,
+                                    bodySpacing: 14,
+                                    bodyFontFamily: "'Roboto', sans-serif ",
+                                    titleFontSize: 14,
+                                },
+                                hover: {
+                                    mode: 'index',
 
-                            },
-                            elements: {
-                                point: {
-                                    radius: 4,
-                                    hoverRadius: 6,
+                                },
+                                elements: {
+                                    point: {
+                                        radius: 4,
+                                        hoverRadius: 6,
+
+                                    },
 
                                 },
 
-                            },
 
+                                scales: {
+                                    yAxes: [{
+                                        position: 'right',
+                                        ticks: {
 
-                            scales: {
-                                yAxes: [{
-                                    position: 'right',
-                                    ticks: {
-
-                                        fontSize: 14,
-                                        fontFamily: "'Roboto', sans-serif ",
-                                        fontStyle: 'bold'
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        fontSize: 14,
-                                        fontFamily: "'Roboto', sans-serif ",
-                                        fontStyle: 'bold'
-                                    }
-                                }],
-                                x: {
-                                    display: true,
-
-                                    scaleLabel: {
-
+                                            fontSize: 14,
+                                            fontFamily: "'Roboto', sans-serif ",
+                                            fontStyle: 'bold'
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        ticks: {
+                                            fontSize: 14,
+                                            fontFamily: "'Roboto', sans-serif ",
+                                            fontStyle: 'bold'
+                                        }
+                                    }],
+                                    x: {
                                         display: true,
-                                        labelString: 'Month'
-                                    }
-                                },
-                                y: {
-                                    display: true,
 
-                                    scaleLabel: {
+                                        scaleLabel: {
 
+                                            display: true,
+                                            labelString: 'Month'
+                                        }
+                                    },
+                                    y: {
                                         display: true,
-                                        labelString: 'Value'
+
+                                        scaleLabel: {
+
+                                            display: true,
+                                            labelString: 'Value'
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 
-                />
+                    />
+                </CardstyleforChart>
             </div>
         )
     }

@@ -3,13 +3,20 @@ import axios from 'axios'
 
 import { Container, Row, Col } from 'react-bootstrap';
 
+import { FadeTransform } from 'react-animation-components';
+
 
 import CardView from '../Card/CardView';
 import TableView from '../Table/TableView';
 import LineChartDaily from '../Charts/LineChartDaily';
 import LineChart from '../Charts/LineChart';
 import BarChart from '../Charts/BarChart';
-import Loader from '../Components/Loading'
+import Loader from '../Components/Loading';
+
+import Update from '../Components/Update'
+
+
+import '../Components/india.css'
 
 
 
@@ -29,6 +36,8 @@ export default class India extends Component {
             disticwisedata: [],
             essential: [],
             isloading: false,
+            width: 0,
+            height: 0,
         };
 
     }
@@ -36,8 +45,26 @@ export default class India extends Component {
 
 
     componentDidMount() {
+        this.getResolution();
         this.fetchdata();
     }
+
+    getResolution() {
+        if (window.innerWidth < 1400) {
+            this.setState({
+                width: 700,
+                height: 520
+            })
+        }
+        else if (window.innerWidth > 1400 && window.innerWidth < 1925) {
+            this.setState({
+                width: 800,
+                height: 630
+            })
+        }
+
+    }
+
 
     async fetchdata() {
         this.setState({ isloading: !this.state.isloading });
@@ -60,15 +87,12 @@ export default class India extends Component {
                 const update = responses[3].data.slice(-5);
 
 
-
-
-
                 const [todayData] = NationalData.statewise.slice(0, 1);
 
                 const casesTimeline = NationalData.cases_time_series;
 
                 const statewise = NationalData.statewise.slice(1);
-                const testeddata = NationalData.tested.slice(-1);
+                const testeddata = NationalData.tested.slice(-1)[0];
 
                 this.setState(
                     {
@@ -82,8 +106,6 @@ export default class India extends Component {
                         isloading: false,
                     }
                 );
-
-
 
 
                 console.log("todaysdata:", this.state.todaysdata,
@@ -100,7 +122,6 @@ export default class India extends Component {
     }
     render() {
 
-
         return (
 
             <>
@@ -111,68 +132,131 @@ export default class India extends Component {
                         :
 
                         <>
-                            <Container>
-                                <Row>
-                                    <Col>
-                                        <CardView
-                                            textcolor={'#FF073A'}
-                                            color={'#F8D7DA'}
-                                            deltadata={this.state.todaysdata.deltaconfirmed}
-                                            data={this.state.todaysdata.confirmed}
-                                            title={"Confirmed"} />
-                                    </Col>
-                                    <Col>
-                                        <CardView
-                                            textcolor={'#007BFF'}
-                                            color={'#EFF7FF'}
-                                            data={this.state.todaysdata.active}
-                                            title={"Active"} />
-                                    </Col>
-                                    <Col>
-                                        <CardView
-                                            textcolor={'#39AE54'}
-                                            color={'#E4F4E8'}
-                                            deltadata={this.state.todaysdata.deltarecovered}
-                                            data={this.state.todaysdata.recovered}
-                                            title={"Recovered"} />
-                                    </Col>
-                                    <Col>
-                                        <CardView
-                                            textcolor={''}
-                                            color={'#E2E3E5'}
-                                            deltadata={this.state.todaysdata.deltadeaths}
-                                            data={this.state.todaysdata.deaths}
-                                            title={"Deceased"} />
+                            <>
+                                <Container >
 
-                                    </Col>
-                                </Row>
-                            </Container>
+                                    <Row >
+                                        <FadeTransform in
 
-                            <Container fluid >
-                                <Row>
-                                    <Col>
-                                        <TableView data={this.state.statewise} />
-                                    </Col>
-                                    <Col>
-                                        <Row>
+                                            transformProps={{
+                                                exitTransform: 'scale(0.8) translateX(-50%)'
+                                            }}
+                                        >
+                                            <Col>
+                                                <CardView
+                                                    textcolor={'#FF073A'}
+                                                    color={'rgba(255, 99, 132, 0.5)'}
+                                                    deltadata={this.state.todaysdata.deltaconfirmed}
+                                                    data={this.state.todaysdata.confirmed}
+                                                    title={"Confirmed"} />
+                                            </Col>
+                                        </FadeTransform >
 
-                                            <Container fluid style={{ padding: '0px' }}>
-                                                <LineChart data={this.state.casetimeseries} />
-                                            </Container>
+                                        <FadeTransform in
 
-                                            <Container fluid style={{ padding: '0px' }}>
-                                                <LineChartDaily data={this.state.casetimeseries} />
-                                            </Container>
+                                            transformProps={{
+                                                exitTransform: 'scale(0.5) translateY(-50%)'
+                                            }}
+                                        >
+                                            <Col >
+                                                <CardView
+                                                    textcolor={'#007BFF'}
+                                                    color={'rgba(54, 162, 235, 0.5)'}
+                                                    data={this.state.todaysdata.active}
+                                                    title={"Active"} />
+                                            </Col>
+                                        </FadeTransform>
 
-                                            <Container fluid style={{ padding: '0px' }}>
-                                                <BarChart data={this.state.statewise} />
-                                            </Container>
+                                        <FadeTransform in
 
-                                        </Row>
-                                    </Col>
-                                </Row>
+                                            transformProps={{
+                                                exitTransform: 'scale(0.5) translateY(-50%)'
+                                            }}
+                                        >
+                                            <Col >
+                                                <CardView
+                                                    textcolor={'#39AE54'}
+                                                    color={'rgba(75, 192, 192, 0.5)'}
+                                                    deltadata={this.state.todaysdata.deltarecovered}
+                                                    data={this.state.todaysdata.recovered}
+                                                    title={"Recovered"} />
+                                            </Col>
+                                        </FadeTransform>
 
-                            </Container>
+                                        <FadeTransform in
+
+                                            transformProps={{
+                                                exitTransform: 'scale(0.8) translateX(50%)'
+                                            }}
+                                        >
+                                            <Col >
+                                                <CardView
+                                                    textcolor={''}
+                                                    color={'rgba(153, 102, 255, 0.5)'}
+                                                    deltadata={this.state.todaysdata.deltadeaths}
+                                                    data={this.state.todaysdata.deaths}
+                                                    title={"Deceased"} />
+
+                                            </Col>
+                                        </FadeTransform>
+
+
+                                        <Update data={this.state.update} />
+                                    </Row>
+
+
+                                </Container>
+
+                            </>
+                            <>
+                                <Container fluid >
+                                    <Row>
+
+                                        <Col>
+                                            <TableView data={this.state.statewise} disticdata={this.state.disticwisedata} />
+                                        </Col>
+
+
+                                        <Col>
+                                            <Row>
+
+                                                <FadeTransform in
+
+                                                    transformProps={{
+                                                        exitTransform: 'scale(0.8) translateX(50%)'
+                                                    }}>
+
+                                                    <Container fluid style={{ padding: '0px' }}>
+                                                        <LineChart
+                                                            width={this.state.width}
+                                                            height={this.state.height}
+                                                            data={this.state.casetimeseries}
+                                                        />
+                                                    </Container>
+                                                </FadeTransform>
+
+                                                <Container fluid style={{ padding: '0px' }}>
+                                                    <LineChartDaily
+                                                        width={this.state.width}
+                                                        height={this.state.height}
+                                                        data={this.state.casetimeseries}
+                                                    />
+                                                </Container>
+
+                                                <Container fluid style={{ padding: '0px' }}>
+                                                    <BarChart
+                                                        width={this.state.width}
+                                                        height={this.state.height}
+                                                        data={this.state.statewise}
+                                                    />
+                                                </Container>
+
+                                            </Row>
+                                        </Col>
+                                    </Row>
+
+                                </Container>
+                            </>
                         </>
                 }
             </>

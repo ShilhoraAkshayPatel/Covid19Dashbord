@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 
+import { CardstyleforChart } from '../Card/Card'
 
 
 export default class BarExample extends Component {
@@ -37,89 +38,92 @@ export default class BarExample extends Component {
                 style={{ marginLeft: '-100px' }}
             >
 
-                <HorizontalBar
-                    width={'1100px'}
-                    height={'800px'}
-                    data={bardata}
-                    options={
-                        {
-                            responsive: true,
-                            intersect: true,
-                            title: {
-                                display: true,
-                                text: 'Top 10 Most Affected Cities',
-                                fontSize: 28,
-                            },
-                            legend: {
+                <CardstyleforChart color={'#fafffe'} >
 
-                                display: true,
-                                labels: {
-                                    fontSize: 14,
-                                    boxWidth: 80,
-                                    padding: 14,
-                                }
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                                bodyFontSize: 15,
-                                bodySpacing: 14,
-                                bodyFontFamily: "'Roboto', sans-serif ",
-                                titleFontSize: 14,
-                            },
-                            hover: {
-                                mode: 'index',
+                    <HorizontalBar
+                        width={this.props.width}
+                        height={this.props.height}
+                        data={bardata}
+                        options={
+                            {
+                                responsive: true,
+                                intersect: true,
+                                title: {
+                                    display: true,
+                                    text: 'Top 10 Most Affected Cities',
+                                    fontSize: 28,
+                                },
+                                legend: {
 
-                            },
-                            elements: {
-                                point: {
-                                    radius: 4,
-                                    hoverRadius: 6,
+                                    display: true,
+                                    labels: {
+                                        fontSize: 14,
+                                        boxWidth: 80,
+                                        padding: 14,
+                                    }
+                                },
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    bodyFontSize: 15,
+                                    bodySpacing: 14,
+                                    bodyFontFamily: "'Roboto', sans-serif ",
+                                    titleFontSize: 14,
+                                },
+                                hover: {
+                                    mode: 'index',
+
+                                },
+                                elements: {
+                                    point: {
+                                        radius: 4,
+                                        hoverRadius: 6,
+
+                                    },
 
                                 },
 
-                            },
 
+                                scales: {
+                                    yAxes: [{
 
-                            scales: {
-                                yAxes: [{
+                                        ticks: {
 
-                                    ticks: {
-
-                                        fontSize: 14,
-                                        fontFamily: "'Roboto', sans-serif ",
-                                        fontStyle: 'bold'
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        fontSize: 14,
-                                        fontFamily: "'Roboto', sans-serif ",
-                                        fontStyle: 'bold'
-                                    }
-                                }],
-                                x: {
-                                    display: true,
-
-                                    scaleLabel: {
-
+                                            fontSize: 14,
+                                            fontFamily: "'Roboto', sans-serif ",
+                                            fontStyle: 'bold'
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        ticks: {
+                                            fontSize: 14,
+                                            fontFamily: "'Roboto', sans-serif ",
+                                            fontStyle: 'bold'
+                                        }
+                                    }],
+                                    x: {
                                         display: true,
-                                        labelString: 'Month'
-                                    }
-                                },
-                                y: {
-                                    display: true,
 
-                                    scaleLabel: {
+                                        scaleLabel: {
 
+                                            display: true,
+                                            labelString: 'Month'
+                                        }
+                                    },
+                                    y: {
                                         display: true,
-                                        labelString: 'Value'
+
+                                        scaleLabel: {
+
+                                            display: true,
+                                            labelString: 'Value'
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                />
+                    />
+                </CardstyleforChart>
             </div>
         );
     }

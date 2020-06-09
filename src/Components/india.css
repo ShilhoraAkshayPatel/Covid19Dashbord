@@ -1,0 +1,9 @@
+.row{
+    order: 5; 
+    padding-bottom: 20px !important;
+}
+
+.col{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
