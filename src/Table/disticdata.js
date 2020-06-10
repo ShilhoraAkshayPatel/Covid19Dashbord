@@ -28,7 +28,7 @@ export default class Distdata extends Component {
             modalShow: this.props.show
         })
         this.fetchdata();
-        console.log("componentdidmount")
+
 
     }
 
@@ -48,7 +48,7 @@ export default class Distdata extends Component {
                     disticdata: distdata
                 })
 
-                console.log(this.state.disticdata)
+
             }
 
 
